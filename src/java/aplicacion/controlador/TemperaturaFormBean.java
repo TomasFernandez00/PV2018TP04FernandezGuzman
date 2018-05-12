@@ -47,7 +47,7 @@ public class TemperaturaFormBean implements Serializable {
 				setTemperaturaConvertida(getTemperatura());
 				break;
 			case 'f':
-				setTemperaturaConvertida((getTemperatura() - 32) * 1.8);
+				setTemperaturaConvertida((getTemperatura() - 32) / 1.8);
 				break;
 			case 'k':
 				setTemperaturaConvertida(getTemperatura() - 273.15);
@@ -61,7 +61,7 @@ public class TemperaturaFormBean implements Serializable {
 				setTemperaturaConvertida(getTemperatura() + 273.15);
 				break;
 			case 'f':
-				setTemperaturaConvertida((getTemperatura() + 459.67) * 1.8);
+				setTemperaturaConvertida((getTemperatura() + 459.67) / 1.8);
 				break;
 			case 'k':
 				setTemperaturaConvertida(getTemperatura());
