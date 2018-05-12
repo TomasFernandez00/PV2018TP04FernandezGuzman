@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author tomas
+ * @author Tomas Fernandez
  */
 public class ColeccionAutos implements Serializable {
 
@@ -43,16 +43,10 @@ public class ColeccionAutos implements Serializable {
 		}
 	}
 
-	/**
-	 * @return the autos
-	 */
 	public ArrayList<Auto> getAutos() {
 		return autos;
 	}
 
-	/**
-	 * @param autos the autos to set
-	 */
 	public void setAutos(ArrayList<Auto> autos) {
 		this.autos = autos;
 	}

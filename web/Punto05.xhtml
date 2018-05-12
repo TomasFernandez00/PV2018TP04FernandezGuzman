@@ -12,16 +12,12 @@
                 <h:panelGrid id="tblAltaAutos" columns="2">
                     <p:outputLabel for="txtPatente" value="Patente: "/>
                     <p:inputText id="txtPatente" value="#{autoFormBean.patente}" required="true"/>
-
                     <p:outputLabel for="txtMarca" value="Marca: "/>
                     <p:inputText id="txtMarca" value="#{autoFormBean.marca}" required="true"/>
-
                     <p:outputLabel for="txtModelo" value="Modelo: "/>
                     <p:inputText id="txtModelo" value="#{autoFormBean.modelo}" required="true"/>
-
                     <p:outputLabel for="txtColor" value="Color: "/>
                     <p:inputText id="txtColor" value="#{autoFormBean.color}" required="true"/>
-
                     <p:outputLabel for="txtCombustible" value="Combustible: "/>
                     <p:inputText id="txtCombustible" value="#{autoFormBean.combustible}" required="true"/>
                     <p:commandButton id="btnAgregarAuto" value="Agregar" actionListener="#{autoFormBean.argregarAuto()}"

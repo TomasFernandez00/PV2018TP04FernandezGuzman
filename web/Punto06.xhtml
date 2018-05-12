@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Punto 06</title>
+    </h:head>
+    <h:body>
+		<p:panel id="pnlLibro" header="Libros">
+			<h:form id="frmLibro">
+				<p:panelGrid id="tblAgregaLibro" columns="2">
+					<p:outputLabel id="lblAutor" value="Autor: "/>
+					<p:inputText id="txtAutor" value="#{libroFormBean.autor}"/>
+					<p:outputLabel id="lblTitulo" value="Titulo: "/>
+					<p:inputText id="txtTitulo" value="#{libroFormBean.titulo}"/>
+					<p:outputLabel id="lblPrecio" value="Precio: "/>
+					<p:inputText id="txtPrecio" value="#{libroFormBean.precio}"/>
+					<p:outputLabel id="lblIsbn" value="Isbn: "/>
+					<p:inputText id="txtIsbn" value="#{libroFormBean.isbn}"/>
+					<p:outputLabel/>
+					<p:commandButton id="btnAgregarLibro" actionListener="#{libroFormBean.agregarLibro()}" value="Agregar" update="dtTblLibro"/>
+				</p:panelGrid>
+				<p:panelGrid id="tblMostrarLibro" columns="4">
+					<p:dataTable id="dtTblLibro" value="#{libroFormBean.libros.libros}" var="cadLibro" emptyMessage="No hay libros">
+						<p:column id="clmnAutor" headerText="Autor">
+							<p:outputLabel value="#{cadLibro.autor}"/>
+						</p:column>
+						<p:column id="clmnTitulo" headerText="Titulo">
+							<p:outputLabel value="#{cadLibro.titulo}"/>
+						</p:column>
+						<p:column headerText="Precio">
+							<p:outputLabel value="#{cadLibro.precio}"/>
+						</p:column>
+						<p:column headerText="ISBN">
+							<p:outputLabel value="#{cadLibro.isbn}"/>
+						</p:column>
+					</p:dataTable>
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+	</h:body>
+</html>
