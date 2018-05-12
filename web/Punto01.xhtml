@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Punto 01 Temperatura</title>
+    </h:head>
+    <h:body>
+		<p:panel id="pnlTemperatura" header="Convertidor de Temperatura" footer="TP04FernandezGuzman">
+			<h:form id="frmTemperatura">
+				<p:panelGrid id="pnlTemperatura" columns="3">
+					<p:outputLabel id="lblTemperaturaAIngresar" value="Ingrese la temperatura a convertir: "/>
+					<p:inputNumber id="nmbrTemperatura" value="#{temperaturaFormBean.temperatura}" required="true"/>
+					<p:selectOneMenu id="menuTipo" value="#{temperaturaFormBean.tipo}">
+						<f:selectItem itemLabel="Celcius" itemValue="c"/>
+						<f:selectItem itemLabel="Farenheit" itemValue="f"/>
+						<f:selectItem itemLabel="Kelvin" itemValue="k"/>
+					</p:selectOneMenu>
+					<p:commandButton id="btnCelcius" value="Celcius" actionListener="#{temperaturaFormBean.convertirCelcius()}" update="lblTempConvertida"/>
+					<p:commandButton id="btnFarenheit" value="Farenheit" actionListener="#{temperaturaFormBean.convertirFarenheit()}" update="lblTempConvertida"/>
+					<p:commandButton id="btnKelvin" value="Kelvin" actionListener="#{temperaturaFormBean.convertirKelvin()}" update="lblTempConvertida"/>
+					<p:outputLabel id="lblConvertido" value="Temperatura convertida: "/>
+					<p:outputLabel id="lblTempConvertida" value="#{temperaturaFormBean.temperaturaConvertida}"/>
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+    </h:body>
+</html>
+
