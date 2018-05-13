@@ -69,7 +69,7 @@
                                      update=":frmAutos" actionListener="#{autoFormBean.modificarAuto()}">
                         <p:confirm header="Pedido de confirmacion" message="Confirma modificar auto?" icon="ui-icon-alert"/>
                     </p:commandButton>
-                    <p:commandButton id="btnCerrarModificarAuto" value="Salir" oncomplete="PF('modificarAuto'.hide())"/>
+                    <p:commandButton id="btnCerrarModificarAuto" value="Salir" oncomplete="PF('modificarAuto').hide()"/>
                 </h:panelGrid>
             </h:form>
         </p:dialog>

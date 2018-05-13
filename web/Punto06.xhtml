@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Punto 06</title>
     </h:head>
@@ -10,16 +11,8 @@
 		<p:panel id="pnlLibro" header="Libros">
 			<h:form id="frmLibro">
 				<p:panelGrid id="tblAgregaLibro" columns="2">
-					<p:outputLabel id="lblAutor" value="Autor: "/>
-					<p:inputText id="txtAutor" value="#{libroFormBean.autor}"/>
-					<p:outputLabel id="lblTitulo" value="Titulo: "/>
-					<p:inputText id="txtTitulo" value="#{libroFormBean.titulo}"/>
-					<p:outputLabel id="lblPrecio" value="Precio: "/>
-					<p:inputText id="txtPrecio" value="#{libroFormBean.precio}"/>
-					<p:outputLabel id="lblIsbn" value="Isbn: "/>
-					<p:inputText id="txtIsbn" value="#{libroFormBean.isbn}"/>
-					<p:outputLabel/>
-					<p:commandButton id="btnAgregarLibro" actionListener="#{libroFormBean.agregarLibro()}" value="Agregar" update="dtTblLibro"/>
+					<p:commandButton id="btnAgregar" oncomplete="PF('agregarLibro').show()" value="Agregar" update=":frmLibro"/>
+					<p:commandButton id="btnBuscarLibro"  oncomplete="PF('buscarLibro').show()" value="Buscar" update="dtTblLibro"/>
 				</p:panelGrid>
 				<p:panelGrid id="tblMostrarLibro" columns="4">
 					<p:dataTable id="dtTblLibro" value="#{libroFormBean.libros.libros}" var="cadLibro" emptyMessage="No hay libros">
@@ -39,5 +32,26 @@
 				</p:panelGrid>
 			</h:form>
 		</p:panel>
+		<p:dialog id="dlgAgregarLibro" widgetVar="agregarLibro" header="Agregar Libro" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
+			<h:form id="frmAgregarLibro">
+				<h:panelGrid id="pnlAgregarLibro" columns="2">
+					<p:outputLabel id="lblTitulo" value="Titulo: "/>
+					<p:inputText id="txtTitulo" value="#{libroFormBean.titulo}"/>
+					<p:outputLabel id="lblPrecio" value="Precio: "/>
+					<p:inputText id="txtPrecio" value="#{libroFormBean.precio}"/>
+					<p:outputLabel id="lblIsbn" value="Isbn: "/>
+					<p:inputText id="txtIsbn" value="#{libroFormBean.isbn}"/>
+					<p:outputLabel id="lblAutor" value="Autor: "/>
+					<p:selectOneMenu id="autor" value="#{libroFormBean.autor}" converter="omnifaces.SelectItemsConverter">
+						<f:selectItems value="#{libroFormBean.autores}" var="a" itemLabel="#{a.apellido}" itemValue="#{a}"/>
+					</p:selectOneMenu>
+                    <p:commandButton id="btnAgregarLibro" value="Agregar" oncomplete="PF('agregarLibro').hide()"
+                                     update=":frmLibro" actionListener="#{libroFormBean.agregarLibro()}">
+                        <p:confirm header="Pedido de confirmacion" message="Confirma agregar libro?" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton id="btnCerrarAgregarLibro" value="Salir" oncomplete="PF('agregarLibro').hide()"/>
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
 	</h:body>
 </html>

@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Libro implements Serializable{
 
-	private String autor;
+	private Autor autor;
 	private String titulo;
 	private int precio;
 	private int isbn;
@@ -21,19 +21,11 @@ public class Libro implements Serializable{
 	public Libro() {
 	}
 
-	public Libro(String autor, String titulo, int precio, int isbn) {
+	public Libro(Autor autor, String titulo, int precio, int isbn) {
 		this.autor = autor;
 		this.titulo = titulo;
 		this.precio = precio;
 		this.isbn = isbn;
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
 	}
 
 	public String getTitulo() {
@@ -58,5 +50,19 @@ public class Libro implements Serializable{
 
 	public void setIsbn(int isbn) {
 		this.isbn = isbn;
+	}
+
+	/**
+	 * @return the autor
+	 */
+	public Autor getAutor() {
+		return autor;
+	}
+
+	/**
+	 * @param autor the autor to set
+	 */
+	public void setAutor(Autor autor) {
+		this.autor = autor;
 	}
 }

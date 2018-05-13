@@ -6,8 +6,10 @@
 package aplicacion.controlador;
 
 import aplicacion.modelo.datos.ListadoLibros;
+import aplicacion.modelo.dominio.Autor;
 import aplicacion.modelo.dominio.Libro;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -19,15 +21,20 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class LibroFormBean implements Serializable{
 
+	private Autor autor;
+	private ArrayList<Autor> autores;
 	private ListadoLibros libros;
 	private Libro libro;
-	private String autor;
 	private String titulo;
 	private int precio;
 	private int isbn;
 
 	public LibroFormBean() {
 		libros = new ListadoLibros();
+		autores = new ArrayList();
+		autores.add(new Autor ("Tomas", "Fernandez", "42355492"));
+		autores.add(new Autor ("Tiago", "Brizuela", "43678512"));
+		autores.add(new Autor ("Martin", "Guzman", "42598678"));
 	}
 
 	public void agregarLibro() {
@@ -49,14 +56,6 @@ public class LibroFormBean implements Serializable{
 
 	public void setLibro(Libro libro) {
 		this.libro = libro;
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
 	}
 
 	public String getTitulo() {
@@ -81,5 +80,33 @@ public class LibroFormBean implements Serializable{
 
 	public void setIsbn(int isbn) {
 		this.isbn = isbn;
+	}
+
+	/**
+	 * @return the autor
+	 */
+	public Autor getAutor() {
+		return autor;
+	}
+
+	/**
+	 * @param autor the autor to set
+	 */
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
+	/**
+	 * @return the autores
+	 */
+	public ArrayList<Autor> getAutores() {
+		return autores;
+	}
+
+	/**
+	 * @param autores the autores to set
+	 */
+	public void setAutores(ArrayList<Autor> autores) {
+		this.autores = autores;
 	}
 }
