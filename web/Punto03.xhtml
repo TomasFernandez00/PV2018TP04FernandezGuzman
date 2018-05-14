@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="formCalculadora">
+            <h:panelGrid id="pnlCalculadora">
+                <p:inputText id="txtMantisa"
+                             maxlength="18"
+                             size="20"
+                             disabled="false"
+                             value="#{calculadoraFormBean.mantisa}"/>
+        </h:panelGrid>       
+        <h:panelGrid id="pnlBotonera"
+                     columns="4">
+            <p:commandButton id="btnValor1"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="1"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="1"/>
+            </p:commandButton>    
+            <p:commandButton id="btnValor2"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="2"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="2"/>
+            </p:commandButton>    
+            <p:commandButton id="btnValor3"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="3"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="3"/>
+            </p:commandButton>
+            <p:commandButton id="btnValormas"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="+"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="+"/>
+            </p:commandButton>
+            <p:commandButton id="btnValor4"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="4"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="4"/>
+            </p:commandButton>
+            <p:commandButton id="btnValor5"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="5"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="5"/>
+            </p:commandButton>
+            <p:commandButton id="btnValor6"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="6"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="6"/>
+            </p:commandButton>
+            <p:commandButton id="btnValormenos"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="-"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="-"/>
+            </p:commandButton>
+            <p:commandButton id="btnValor7"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="7"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="7"/>
+            </p:commandButton>
+            <p:commandButton id="btnValor8"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="8"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="8"/>
+            </p:commandButton>
+            <p:commandButton id="btnValor9"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="9"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="9"/>
+            </p:commandButton>
+            <p:commandButton id="btnValorx"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="x"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="x"/>
+            </p:commandButton>
+            <p:commandButton id="btnValorC"
+                             actionListener="#{calculadoraFormBean.borrarDatos()}"
+                             value="c"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="c"/>
+            </p:commandButton>
+            <p:commandButton id="btnValor0"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="0"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="0"/>
+            </p:commandButton>
+            <p:commandButton id="btnValorig"
+                             actionListener="#{calculadoraFormBean.realizarOperacion()}"
+                             value="="
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="="/>
+            </p:commandButton>
+            <p:commandButton id="btnValordiv"
+                             actionListener="#{calculadoraFormBean.registrarValorBoton()}"
+                             value="/"
+                             update="txtMantisa">
+                <f:param name="valorPresionado" value="/"/>
+            </p:commandButton>
+            </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
+

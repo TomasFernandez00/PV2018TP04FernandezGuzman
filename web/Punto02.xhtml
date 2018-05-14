@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlNumeros">
+            <h:form id="frmNumeros">
+                <p:panelGrid id="tblAgregarNumero" columns="5">
+                    <p:outputLabel id="lblNumero" value="Agregar Numero"/>
+                    <p:inputNumber id="inNumero" value="#{numerosFormBean.listadoNumeros}"/>
+                    <p:outputLabel id="outMayor" value="#{numerosFormBean.mayor}"/>
+                    <p:outputLabel id="outMenor" value="#{numerosFormBean.menor}"/>
+                    <p:outputLabel id="outProm" value="#{numerosFormBean.promedio}"/>
+                    <p:commandButton id="btnAgregar"
+                                     value="Agregar"
+                                     actionListener="#{numerosFormBean.agregarNumero()}" 
+                                     update="tblNumeros">
+                    </p:commandButton>
+                    <p:commandButton id="btnMayor"
+                                     value="Calcular Mayor"
+                                     actionListener="#{numerosFormBean.calcularMayor}"
+                                     update="outMayor">
+                    </p:commandButton>
+                    <p:commandButton id="btnMenor"
+                                     value="Calcular Menor"
+                                     actionListener="#{numerosFormBean.calcularMenor}"
+                                     update="outMenor">
+                    </p:commandButton>
+                    <p:commandButton id="btnProm"
+                                     value="Calcular Promedio"
+                                     actionListener="#{numerosFormBean.calcularPromedio}"
+                                     update="outProm">
+                    </p:commandButton>
+                </p:panelGrid>
+                <p:panelGrid id="pnlMostrarNumeros" columns="1">
+                             <p:dataTable id="tblNumeros"
+                                          value="#{numerosFormBean.listadoNumeros.listado}" 
+                                          var="cadaNum"
+                                          emptyMessage="No hay Numeros">
+                                 <p:column id="num" 
+                                           headerText="Numeros">
+                                          <p:outputLabel value="#{cadaNum.numero}"/>
+                                 </p:column>
+                             </p:dataTable>
+                </p:panelGrid>     
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
