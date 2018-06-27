@@ -11,28 +11,29 @@
             <h:form id="frmNumeros">
                 <p:panelGrid id="tblAgregarNumero" columns="5">
                     <p:outputLabel id="lblNumero" value="Agregar Numero"/>
-                    <p:inputNumber id="inNumero" value="#{numerosFormBean.listadoNumeros}"/>
-                    <p:outputLabel id="outMayor" value="#{numerosFormBean.mayor}"/>
-                    <p:outputLabel id="outMenor" value="#{numerosFormBean.menor}"/>
-                    <p:outputLabel id="outProm" value="#{numerosFormBean.promedio}"/>
+                    <p:inputNumber id="inNumero" value="#{numerosFormBean.numero}"/>
+                    <p:outputLabel id="outMayor" value="#{numerosFormBean.listadoNumeros.mayor}"/>
+                    <p:outputLabel id="outMenor" value="#{numerosFormBean.listadoNumeros.menor}"/>
+                    <p:outputLabel id="outProm" value="#{numerosFormBean.listadoNumeros.promedio}"/>
                     <p:commandButton id="btnAgregar"
                                      value="Agregar"
                                      actionListener="#{numerosFormBean.agregarNumero()}" 
                                      update="tblNumeros">
                     </p:commandButton>
+					<p:outputLabel/>
                     <p:commandButton id="btnMayor"
                                      value="Calcular Mayor"
-                                     actionListener="#{numerosFormBean.calcularMayor}"
+                                     actionListener="#{numerosFormBean.calcularMayor()}"
                                      update="outMayor">
                     </p:commandButton>
                     <p:commandButton id="btnMenor"
                                      value="Calcular Menor"
-                                     actionListener="#{numerosFormBean.calcularMenor}"
+                                     actionListener="#{numerosFormBean.calcularMenor()}"
                                      update="outMenor">
                     </p:commandButton>
                     <p:commandButton id="btnProm"
                                      value="Calcular Promedio"
-                                     actionListener="#{numerosFormBean.calcularPromedio}"
+                                     actionListener="#{numerosFormBean.calcularPromedio()}"
                                      update="outProm">
                     </p:commandButton>
                 </p:panelGrid>
@@ -43,7 +44,7 @@
                                           emptyMessage="No hay Numeros">
                                  <p:column id="num" 
                                            headerText="Numeros">
-                                          <p:outputLabel value="#{cadaNum.numero}"/>
+									 <p:outputLabel value="#{cadaNum.intValue()}"/>
                                  </p:column>
                              </p:dataTable>
                 </p:panelGrid>     

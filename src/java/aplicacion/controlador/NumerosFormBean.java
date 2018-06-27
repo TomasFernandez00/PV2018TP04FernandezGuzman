@@ -6,7 +6,6 @@
 package aplicacion.controlador;
 
 import aplicacion.modelo.datos.ListadoNumeros;
-import aplicacion.modelo.dominio.Numeros;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -17,7 +16,7 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class NumerosFormBean {
-    private Numeros numeros;
+    private int numero;
     private ListadoNumeros listadoNumeros;
     private int mayor;
     private int menor;
@@ -29,97 +28,113 @@ public class NumerosFormBean {
         listadoNumeros = new ListadoNumeros();
     }
 
-    public NumerosFormBean(Numeros numeros, ListadoNumeros listadoNumeros, int mayor, int menor, double promedio) {
-        this.numeros = numeros;
-        this.listadoNumeros = listadoNumeros;
-        this.mayor = mayor;
-        this.menor = menor;
-        this.promedio = promedio;
-    }
+	public void agregarNumero() {
+		listadoNumeros.getListado().add(numero);
+	}
+	
+	public void calcularMenor() {
+		menor = Integer.MAX_VALUE;
+		for (int i = 0 ; i < listadoNumeros.getListado().size() ; i++) {
+			if (listadoNumeros.getListado().get(i) > mayor) {
+				mayor =  listadoNumeros.getListado().get(i);
+			}
+			if (listadoNumeros.getListado().get(i) < menor) {
+				menor = listadoNumeros.getListado().get(i);
+			}
+		}
+		listadoNumeros.setMenor(menor);
+	}
 
-   
+	public void calcularMayor() {
+		mayor = 0;
+		for (int i = 0 ; i < listadoNumeros.getListado().size() ; i++) {
+			if (listadoNumeros.getListado().get(i) > mayor) {
+				mayor =  listadoNumeros.getListado().get(i);
+			}
+		}
+		listadoNumeros.setMayor(mayor);
+	}
 
-    /**
-     * @return the listadoNumeros
-     */
-    public ListadoNumeros getListadoNumeros() {
-        return listadoNumeros;
-    }
+	public void calcularPromedio() {
+		setPromedio(0);
+		for (int i = 0 ; i < listadoNumeros.getListado().size() ; i++) {
+			setPromedio(getPromedio() + listadoNumeros.getListado().get(i));
+		}
+		setPromedio(getPromedio() / listadoNumeros.getListado().size());
+		listadoNumeros.setPromedio(getPromedio());
+	}
 
-    /**
-     * @param listadoNumeros the listadoNumeros to set
-     */
-    public void setListadoNumeros(ListadoNumeros listadoNumeros) {
-        this.listadoNumeros = listadoNumeros;
-    }
+	/**
+	 * @return the numero
+	 */
+	public int getNumero() {
+		return numero;
+	}
 
-    /**
-     * @return the mayor
-     */
-    public int getMayor() {
-        return mayor;
-    }
+	/**
+	 * @param numero the numero to set
+	 */
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
 
-    /**
-     * @param mayor the mayor to set
-     */
-    public void setMayor(int mayor) {
-        this.mayor = mayor;
-    }
+	/**
+	 * @return the listadoNumeros
+	 */
+	public ListadoNumeros getListadoNumeros() {
+		return listadoNumeros;
+	}
 
-    /**
-     * @return the menor
-     */
-    public int getMenor() {
-        return menor;
-    }
+	/**
+	 * @param listadoNumeros the listadoNumeros to set
+	 */
+	public void setListadoNumeros(ListadoNumeros listadoNumeros) {
+		this.listadoNumeros = listadoNumeros;
+	}
 
-    /**
-     * @param menor the menor to set
-     */
-    public void setMenor(int menor) {
-        this.menor = menor;
-    }
+	/**
+	 * @return the mayor
+	 */
+	public int getMayor() {
+		return mayor;
+	}
 
-    /**
-     * @return the promedio
-     */
-    public double getPromedio() {
-        return promedio;
-    }
+	/**
+	 * @param mayor the mayor to set
+	 */
+	public void setMayor(int mayor) {
+		this.mayor = mayor;
+	}
 
-    /**
-     * @param promedio the promedio to set
-     */
-    public void setPromedio(double promedio) {
-        this.promedio = promedio;
-    }
-    
-    public void agregarNumero(){
-       listadoNumeros.agregarNumero(numeros);
-    }
-    
-    public void CalcularMayor(){
-        setMayor(listadoNumeros.mayor());
-    }
-    
-    public void CalcularMenor(){
-        setMenor(listadoNumeros.menor());
-    }
-    public void CalcularPromedio(){
-        setPromedio(listadoNumeros.promedio());
-    }
-    /**
-     * @return the numeros
-     */
-    public Numeros getNumeros() {
-        return numeros;
-    }
+	/**
+	 * @return the menor
+	 */
+	public int getMenor() {
+		return menor;
+	}
 
-    /**
-     * @param numeros the numeros to set
-     */
-    public void setNumeros(Numeros numeros) {
-        this.numeros = numeros;
-    }
+	/**
+	 * @param menor the menor to set
+	 */
+	public void setMenor(int menor) {
+		this.menor = menor;
+	}
+
+	/**
+	 * @return the promedio
+	 */
+	public double getPromedio() {
+		return promedio;
+	}
+
+	/**
+	 * @param promedio the promedio to set
+	 */
+	public void setPromedio(double promedio) {
+		this.promedio = promedio;
+	}
+
+	/**
+	 * @return the promedio
+	 */
 }
