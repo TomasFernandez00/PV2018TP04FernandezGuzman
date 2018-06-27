@@ -28,7 +28,11 @@ public class Calculadora implements Serializable {
         return primerNumero * segundoNumero;
     }
 
-    public int dividir(int a, int b) {
+    public double dividir(int a, int b) {
         return a / b;
     }
+
+	public double potencia(int a, int b) {
+		return Math.pow(a, b);
+	}
 }

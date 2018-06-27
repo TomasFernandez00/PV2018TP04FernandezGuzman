@@ -113,6 +113,9 @@
                              value="/"
                              update="txtMantisa">
                 <f:param name="valorPresionado" value="/"/>
+				<p:commandButton id="btnValorPot" actionListener="#{calculadoraFormBean.registrarValorBoton()}" value="^" update="txtMantisa">
+					<f:param name="valorPresionado" value="^"/>
+				</p:commandButton>
             </p:commandButton>
             </h:panelGrid>
     </h:form>
